@@ -5,15 +5,15 @@ import CoffeeShop from './Components/pages/CoffeeShop';
 import GlobalStyle from './Components/styles/GlobalStyle';
 
 function App() {
-    return (
-        <Router>
-            <GlobalStyle />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/coffeeshop/:id" element={<CoffeeShop />} />
-            </Routes>
-        </Router>
-    );
+  return (
+    <Router>
+      <GlobalStyle />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/coffeeshop/:id" element={<CoffeeShop />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
