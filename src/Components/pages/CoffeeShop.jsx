@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, CoffeeShopDetails, ProductList, MapContainer } from '../styles/CoffeeShopStyles';
+import { Container, CoffeeShopDetails, ProductList, MapContainer, ProductCard } from '../styles/CoffeeShopStyles';
 import { coffeeShops } from '../../data/dummyData';
 import { MapContainer as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 
@@ -10,7 +10,7 @@ function CoffeeShop() {
 
     if (!shop) return <p>Coffee shop not found</p>;
 
-    const position = [37.7749, -122.4194]; // Sample coordinates (San Francisco, CA)
+    const position = [shop.coordinates.lat, shop.coordinates.lng];
 
     return (
         <Container>
@@ -24,11 +24,11 @@ function CoffeeShop() {
                 <h2>Products</h2>
                 <ul>
                     {shop.products.map(product => (
-                        <li key={product._id}>
+                        <ProductCard key={product._id}>
                             <h3>{product.name}</h3>
                             <p>${product.price.toFixed(2)}</p>
                             <p>{product.category}</p>
-                        </li>
+                        </ProductCard>
                     ))}
                 </ul>
             </ProductList>
