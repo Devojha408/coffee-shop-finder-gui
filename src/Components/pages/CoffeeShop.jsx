@@ -1,14 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, CoffeeShopDetails, ProductList, MapContainer, ProductCard } from '../styles/CoffeeShopStyles';
-import { coffeeShops } from '../../data/dummyData';
 import { MapContainer as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
+import axiosInstance from '../../api/axiosInstance';
 
 function CoffeeShop() {
     const { id } = useParams();
-    const shop = coffeeShops.find(shop => shop._id === id);
+    const [shop, setShop] = useState(null);
 
-    if (!shop) return <p>Coffee shop not found</p>;
+    useEffect(() => {
+        const fetchCoffeeShop = async () => {
+            try {
+                const response = await axiosInstance.get(`/coffeeshops/${id}`);
+                setShop(response.data);
+            } catch (error) {
+                console.error('Error fetching coffee shop:', error);
+            }
+        };
+
+        fetchCoffeeShop();
+    }, [id]);
+
+    if (!shop) return <p>Loading...</p>;
 
     const position = [shop.coordinates.lat, shop.coordinates.lng];
 
