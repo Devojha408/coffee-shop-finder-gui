@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Container, CoffeeShopDetails, ProductList, MapContainer, ProductCard } from '../styles/CoffeeShopStyles';
 import { MapContainer as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
+import { FaArrowLeft, FaCoffee } from 'react-icons/fa'; // Import FaArrowLeft and FaCoffee icons
 import axiosInstance from '../../api/axiosInstance';
 
 function CoffeeShop() {
@@ -21,14 +22,28 @@ function CoffeeShop() {
         fetchCoffeeShop();
     }, [id]);
 
-    if (!shop) return <p>Loading...</p>;
+    // Funny loading message component
+    const LoadingMessage = (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+            <p>Grabbing some coffee beans...</p>
+            <FaCoffee style={{ fontSize: '48px', marginTop: '20px' }} />
+        </div>
+    );
+
+    // Display the funny loading message while shop data is fetching
+    if (!shop) return LoadingMessage;
 
     const position = [shop.coordinates.lat, shop.coordinates.lng];
 
     return (
         <Container>
-            <CoffeeShopDetails>
+            <div className="header">
                 <img src={shop.image} alt={shop.name} />
+                <Link to="/" className="back-link">
+                    <FaArrowLeft className="back-icon" />
+                </Link>
+            </div>
+            <CoffeeShopDetails>
                 <h1>{shop.name}</h1>
                 <p>{shop.location}</p>
                 <p>{shop.rating} ★</p>
