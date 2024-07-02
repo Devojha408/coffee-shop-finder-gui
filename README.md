@@ -1,19 +1,55 @@
-# Coffee Shop Finder ♥️
+# ☕ Coffee Shop Finder UI
 
-This Coffee Shop Finder App allows users to search for, explore, and interact with coffee shops. The app features a highly interactive and smooth UI, leveraging efficient APIs for data handling, and ensures secure and scalable deployment on AWS.
+Welcome to the Coffee Shop Finder app! This project helps users find coffee shops with advanced search and sorting capabilities powered by MongoDB Atlas Search.
 
-## Features
-1. Search for coffee shops.
-2. View detailed information about each coffee shop.
-3. See product listings per coffee shop with details.
-4. Map integration for shop locations.
+## ✨ Features
 
-## Tech Stack
--> Frontend: React.js, styled-components\
--> Backend: Node.js (for future implementation)\
--> Database: MongoDB (for future implementation)\
--> Deployment: AWS\
--> Maps Integration: OpenStreetMap\
+- 🔍 **Advanced Search**: Search coffee shops by name, location, or menu items.
+- 🔀 **Sorting Options**: Sort coffee shops based on rating.
+- 🌐 **Backend**: Built with Node.js and Express.
+- 🗄️ **Database**: MongoDB for data storage.
+- 🚀 **Atlas Search**: Enhanced search functionality using MongoDB Atlas Search.
+- ☁️ **Deployment**: Deployed on AWS.
+
+## 🛠️ Technologies Used
+
+- **Frontend**: React, styled-components
+- **Backend**: Node.js, Express
+- **Database**: MongoDB
+- **Search**: MongoDB Atlas Search
+- **Deployment**: AWS
+- **Maps Integration**: OpenStreetMap
+
+## 🚀 Getting Started
+
+## 🔧 Installation
+
+### Frontend
+
+1. 📥 **Clone the repository**:
+    ```sh
+    git clone https://github.com/Devojha408/coffee-shop-finder-gui.git
+    ```
+
+2. 📁 **Navigate to the project directory**:
+    ```sh
+    cd coffee-shop-finder
+    ```
+
+3. 📦 **Install dependencies**:
+    ```sh
+    npm install
+    ```
+
+4. 🏃‍♂️ **Start the development server**:
+    ```sh
+    npm start
+    ```
+
+### Backend Repo URL: https://github.com/Devojha408/coffee-shop-finder-api
+
+You're now ready to start using the Coffee Shop Finder app! ☕🚀
+
 
 ## Available Scripts
 
