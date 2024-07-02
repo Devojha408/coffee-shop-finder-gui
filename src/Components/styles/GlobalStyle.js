@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import coffeeWebp from '../../../asset/coffee.webp';
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -6,7 +7,9 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        background-color: #f8f8f8;
+        background-image: url(${coffeeWebp});
+        background-size: 'cover';
+        background-position: 'center';
     }
 `;
 

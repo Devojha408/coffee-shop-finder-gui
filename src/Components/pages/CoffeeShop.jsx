@@ -37,7 +37,7 @@ function CoffeeShop() {
 
     return (
         <Container>
-            <div className="header">
+            <div className="header" style={{ borderRadius: '20px' }}>
                 <img src={shop.image} alt={shop.name} />
                 <Link to="/" className="back-link">
                     <FaArrowLeft className="back-icon" />

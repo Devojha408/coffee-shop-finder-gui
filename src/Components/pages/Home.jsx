@@ -1,17 +1,18 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { FaMapMarkerAlt, FaSearch, FaCoffee } from 'react-icons/fa'; // Import FaCoffee for the coffee cup icon
+import { Toolbar, IconButton, InputBase, Tooltip } from '@mui/material';
+import { FaMapMarkerAlt, FaSearch, FaCoffee, FaSlidersH, FaInfoCircle } from 'react-icons/fa';
 import axiosInstance from '../../api/axiosInstance';
 import {
     Container,
     CoffeeShopCard,
-    SearchBar,
     FeaturedShops,
     CoffeeShopImage,
     ImageWrapper,
-    FilterContainer,
-    SortSelect,
-    PlaceholderImage
+    LoadingText,
+    SearchBar,
+    SortButton,
+    SortOptions,
 } from '../styles/HomeStyles';
 
 const DEBOUNCE_DELAY = 300;
@@ -21,6 +22,7 @@ function Home() {
     const [sortOption, setSortOption] = useState('rating_desc');
     const [loading, setLoading] = useState(true);
     const [coffeeShops, setCoffeeShops] = useState([]);
+    const [showSortOptions, setShowSortOptions] = useState(false);
 
     const fetchCoffeeShops = useCallback(async (query, sort) => {
         setLoading(true);
@@ -53,51 +55,73 @@ function Home() {
         setSearchTerm(e.target.value);
     };
 
+    const handleSortClick = () => {
+        setShowSortOptions(!showSortOptions);
+    };
+
+    const handleSortOptionChange = (option) => {
+        setSortOption(option);
+        setShowSortOptions(false);
+    };
+
     return (
         <Container>
-            <SearchBar>
-                <input
-                    type="text"
-                    placeholder="Find a coffee shop anywhere..."
-                    value={searchTerm}
-                    onChange={handleSearchChange}
-                    style={{ width: '300px' }} // Adjust width as needed
-                />
-                <FaSearch />
-            </SearchBar>
-            <FilterContainer>
-                <SortSelect
-                    value={sortOption}
-                    onChange={(e) => setSortOption(e.target.value)}
-                >
-                    <option value="rating_desc">Rating: High to Low</option>
-                    <option value="rating_asc">Rating: Low to High</option>
+            <Toolbar style={{ backgroundColor: '#795548', color: '#fff', borderRadius: '10px' }}> {/* Coffee-themed colors */}
+                <SearchBar>
+                    <InputBase
+                        placeholder=" Search..."
+                        style={{ flex: 1 }}
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                    />
+                    <IconButton
+                        color="inherit"
+                        aria-label="search"
+                    >
+                        <FaSearch />
+                    </IconButton>
+                </SearchBar>
+                <SortButton onClick={handleSortClick}>
+                    <FaSlidersH />
+                </SortButton>
+                <Tooltip title="Advanced Search - Search by name, location, or menu items" placement="top">
+                    <IconButton color="inherit">
+                        <FaInfoCircle />
+                    </IconButton>
+                </Tooltip>
+            </Toolbar>
+            {showSortOptions && (
+                <SortOptions>
+                    <div onClick={() => handleSortOptionChange('rating_desc')}>
+                        Rating: High to Low
+                    </div>
+                    <div onClick={() => handleSortOptionChange('rating_asc')}>
+                        Rating: Low to High
+                    </div>
                     {/* Add more sort options as needed */}
-                </SortSelect>
-            </FilterContainer>
-            <FeaturedShops>
-                {loading &&
-                    <div style={{ textAlign: 'center', marginTop: '20px' }}>
-                        <FaCoffee style={{ fontSize: '3em', marginBottom: '10px' }} />
-                        <p>Finding the best coffee...</p>
-                    </div>}
-                {!loading && coffeeShops.length === 0 && <div style={{ textAlign: 'center', marginTop: '20px', gridColumn: 'span 2' }}>
+                </SortOptions>
+            )}
+            <br />
+            {loading && (
+                <LoadingText>
                     <FaCoffee style={{ fontSize: '3em', marginBottom: '10px' }} />
-                    <p>No coffee shops found. Maybe try a different search?</p>
-                </div>}
+                    <h3>Finding the best coffee...</h3>
+                </LoadingText>
+            )}
+            {!loading && coffeeShops.length === 0 && (
+                <div style={{ textAlign: 'center', marginTop: '20px', gridColumn: 'span 2' }}>
+                    <FaCoffee style={{ fontSize: '3em', marginBottom: '10px' }} />
+                    <h3>No coffee shops found. Maybe try a different search?</h3>
+                </div>
+            )}
+            <FeaturedShops>
                 {coffeeShops.map(shop => (
                     <CoffeeShopCard key={shop._id}>
                         <Link to={`/coffeeshop/${shop._id}`}>
                             <ImageWrapper>
-                                <PlaceholderImage loaded={shop.imageLoaded} />
                                 <CoffeeShopImage
                                     src={shop.image}
                                     alt={shop.name}
-                                    onLoad={() => {
-                                        shop.imageLoaded = true;
-                                        setCoffeeShops([...coffeeShops]);
-                                    }}
-                                    loaded={shop.imageLoaded}
                                 />
                             </ImageWrapper>
                             <h2>{shop.name}</h2>

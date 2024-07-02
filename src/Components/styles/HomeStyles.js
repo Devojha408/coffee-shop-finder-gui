@@ -1,23 +1,21 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: #f0f0f0;
-  color: #333;
+  backgroundColor: '#795548';
+  color: '#fff' ;
 `;
 
 export const SearchBar = styled.div`
   display: flex;
   align-items: center;
   background-color: white;
-  padding: 10px 20px;
-  border-radius: 30px;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-
+  margin-right: 20px;
   input {
     border: none;
     outline: none;
@@ -25,26 +23,40 @@ export const SearchBar = styled.div`
     font-size: 16px;
     flex: 1;
   }
-
   svg {
     color: #888;
   }
 `;
 
-export const FilterContainer = styled.div`
+export const SortButton = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 100%;
-  max-width: 600px;
-  margin-bottom: 20px;
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+
+  svg {
+    margin-right: 5px;
+  }
 `;
 
-export const SortSelect = styled.select`
-  padding: 10px;
-  border: 1px solid #ccc;
+export const SortOptions = styled.div`
+  position: absolute;
+  top: 64px;
+  right: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  background-color: #fff;
+  z-index: 1;
+
+  div {
+    padding: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
 `;
 
 export const FeaturedShops = styled.div`
@@ -55,7 +67,7 @@ export const FeaturedShops = styled.div`
 `;
 
 export const CoffeeShopCard = styled.div`
-  background-color: white;
+  background-color: #ffffffb2;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -89,49 +101,25 @@ export const CoffeeShopCard = styled.div`
   }
 `;
 
-const skeletonAnimation = keyframes`
-    0% {
-        background-position: -200px 0;
-    }
-    100% {
-        background-position: calc(200px + 100%) 0;
-    }
-`;
-
-export const ImageWrapper = styled.div`
-  width: 150px;
-  height: 150px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  overflow: hidden;
-  position: relative;
-`;
-
-export const LoadingSkeleton = styled.div`
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  background-color: #e0e0e0;
-  background-image: linear-gradient(
-    90deg,
-    #e0e0e0 0px,
-    #f0f0f0 40px,
-    #e0e0e0 80px
-  );
-  background-size: 200px 100%;
-  animation: ${skeletonAnimation} 1.2s ease-in-out infinite;
-`;
-
 export const CoffeeShopImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: ${(props) => (props.loaded ? "block" : "none")};
 `;
 
-export const PlaceholderImage = styled.div`
+export const ImageWrapper = styled.div`
   width: 100%;
-  height: 100%;
-  background-color: #e0e0e0;
-  display: ${(props) => (props.loaded ? "none" : "block")};
+  height: 150px;
+  border-radius: 10px;
+  overflow: hidden;
+`;
+
+export const LoadingText = styled.div`
+  text-align: center;
+  margin-top: 20px;
+
+  p {
+    margin-top: 10px;
+    color: #888;
+  }
 `;
