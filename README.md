@@ -33,7 +33,7 @@ Welcome to the Coffee Shop Finder app! This project helps users find coffee shop
 
 2. 📁 **Navigate to the project directory**:
     ```sh
-    cd coffee-shop-finder
+    cd coffee-shop-finder-gui
     ```
 
 3. 📦 **Install dependencies**:
