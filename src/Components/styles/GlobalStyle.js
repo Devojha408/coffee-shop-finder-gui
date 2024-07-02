@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import coffeeWebp from '../../../asset/coffee.webp';
+import coffeeWebp from '../../asset/coffee.webp';
 
 const GlobalStyle = createGlobalStyle`
     body {

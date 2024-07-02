@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import coffeeWebp from '../../../asset/coffee.webp';
+import coffeeWebp from '../../asset/coffee.webp';
 
 export const Container = styled.div`
   display: flex;
