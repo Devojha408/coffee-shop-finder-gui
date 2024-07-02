@@ -2,6 +2,22 @@
 
 Welcome to the Coffee Shop Finder app! This project helps users find coffee shops with advanced search and sorting capabilities powered by MongoDB Atlas Search.
 
+## Home
+
+![image](https://github.com/Devojha408/coffee-shop-finder-gui/assets/55236505/4c1e68a6-3ee6-4518-a56d-0bf0886e1797)
+
+![image](https://github.com/Devojha408/coffee-shop-finder-gui/assets/55236505/f8b048fd-d99c-439d-9f13-247a3de00ad4)
+
+## Cafe Details
+
+![image](https://github.com/Devojha408/coffee-shop-finder-gui/assets/55236505/43b2652a-30f8-4e15-82e9-93942e9705df)
+
+## Cafe Location Tracking
+
+![image](https://github.com/Devojha408/coffee-shop-finder-gui/assets/55236505/830ce17d-d30d-4883-af7d-b3778e5e87b5)
+
+
+
 ## ✨ Features
 
 - 🔍 **Advanced Search**: Search coffee shops by name, location, or menu items.
